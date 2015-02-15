@@ -77,7 +77,7 @@ os.downcase!
 puts ' '
 exitis = 0
 while exitis == 0 do
-  print "To begin, type help to list possible commands, type a command or, type exit. >> "
+  print "Type 'help' to list possible commands. >> "
   userCommand = gets.chomp
   userCommand.downcase!
 
@@ -198,7 +198,7 @@ while exitis == 0 do
     Kernel.system "touch #{file}"
     %x[touch #{file}]
     `touch #{file}`
-    puts 'I ran: "touch #{file}"'
+    puts "I ran: 'touch #{file}'"
 #The following code is broken for now.
 =begin
   when 'edit file'
@@ -220,6 +220,7 @@ while exitis == 0 do
     puts "\t delete folder: deletes a folder on your computer (type yes at every promt)."
     puts "\t create file: creates an empty text file on your computer (.rb, .py, .java, etc. count as text files)"
 #    puts "\t edit file: edits a text file in a bare-bones, quick editor (.rb, .html, .java, etc. count as text files)"
+    puts "\t exit: exits ezbash"
     puts "\r"
   when 'exit'
     abort
