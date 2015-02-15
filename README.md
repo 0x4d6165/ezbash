@@ -8,4 +8,4 @@ Simply go into the terminal application on your computer (search "terminal" in y
 '''
 ezbash
 '''
-You will be greeted by a prompt asking which operating system you use. If you use a Linux other than the ones listed, look at that distributors website or on Wikipeia and you should be able to find out the overarching distro (it's probably Debian). Then, list possible commands by entering "help" and get started! Have fun!
+You will be greeted by a prompt asking which operating system you use. If you use a Linux other than the ones listed, look at that distributors website or on Wikipedia and you should be able to find out the overarching distro (it's probably Debian). Then, list possible commands by entering "help" and get started! Have fun!
