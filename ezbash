@@ -6,21 +6,21 @@ def installdeb(package)
   %x[sudo apt-get install #{package}]
   `sudo apt-get install #{package}`
   puts "\r"
-  puts 'I ran: "sudo apt-get install #{package}"'
+  puts "I ran: 'sudo apt-get install #{package}''
 end
 def installrpm(package)
   Kernel.system "sudo yum install #{package}"
   %x[sudo yum install #{package}]
   `sudo yum install #{package}`
   puts "\r"
-  puts 'I ran: "sudo yum install #{package}"'
+  puts "I ran: 'sudo yum install #{package}'"
 end
 def installpac(package)
   Kernel.system "sudo pacman -S #{package}"
   %x[sudo pacman -S #{package}]
   `sudo pacman -S #{package}`
   puts "\r"
-  puts 'I ran: "sudo pacman -S #{package}"'
+  puts "I ran: 'sudo pacman -S #{package}'"
   puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
 
@@ -29,21 +29,21 @@ def uninstalldeb(package)
   %x[sudo apt-get remove #{package}]
   `sudo apt-get remove #{package}`
   puts "\r"
-  puts 'I ran: "sudo apt-get remove #{package}"'
+  puts "I ran: 'sudo apt-get remove #{package}'"
 end
 def uninstallrpm(package)
   Kernel.system "sudo yum uninstall #{package}"
   %x[sudo yum uninstall #{package}]
   `sudo yum uninstall #{package}`
   puts "\r"
-  puts 'I ran: "sudo yum uninstall #{package}"'
+  puts "I ran: 'sudo yum uninstall #{package}'"
 end
 def uninstallpac(package)
   Kernel.system "sudo pacman -R #{package}"
   %x[sudo pacman -R #{package}]
   `sudo pacman -R #{package}`
   puts "\r"
-  puts 'I ran: "sudo pacman -R #{package}"'
+  puts "I ran: 'sudo pacman -R #{package}'"
   puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
 
@@ -52,21 +52,21 @@ def searchdeb(package)
   %x[sudo apt-cache search #{package}]
   `sudo apt-cache search #{package}`
   puts "\r"
-  puts 'I ran: "sudo apt-cache search #{package}"'
+  puts "I ran: 'sudo apt-cache search #{package}'"
 end
 def searchrpm(package)
   Kernel.system "sudo yum search #{package}"
   %x[sudo yum search #{package}]
   `sudo yum search #{package}`
   puts "\r"
-  puts 'I ran: "sudo yum search #{package}"'
+  puts "I ran: 'sudo yum search #{package}'"
 end
 def searchpac(package)
   Kernel.system "pacman -Ss #{package}"
   %x[pacman -Ss #{package}]
   `pacman -Ss #{package}`
   puts "\r"
-  puts 'I ran: "pacman -Ss #{package}"'
+  puts "I ran: 'pacman -Ss #{package}'"
   puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
 
