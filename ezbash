@@ -1,6 +1,26 @@
 #!/usr/bin/env ruby
 
 #Define methods
+def addbrew()
+  if 'which brew' == ''
+    puts 'You appear to be running MacOS without Homebrew installed.'
+    puts "If you don\'t know what Homebrew is, visit 'brew.sh', if you do and would like to install it, type 'yes'. >> "
+    userreply = gets.chomp
+    userreply.downcase!
+    until userselect == true
+      if userreply == 'yes'
+        Kernel.system "ruby -e '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)'"
+        userselect = true
+      elsif userreply == 'no'
+        puts 'That\'s fine! Just keep in mind, the install, uninstall, and search commands won\'t work for you'
+        userselect = true
+      else
+        puts 'Please say yes or no.'
+      end
+    end
+  end
+end
+
 def installdeb(package)
   Kernel.system "sudo apt-get install #{package}"
   puts "\r"
@@ -17,7 +37,11 @@ def installpac(package)
   puts "I ran: 'sudo pacman -S #{package}'"
   puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
-
+def installhb(package)
+  Kernel.system "brew install #{package}"
+  puts "\r"
+  puts "I ran: 'brew install #{package}'"
+end
 def uninstalldeb(package)
   Kernel.system "sudo apt-get remove #{package}"
   puts "\r"
@@ -34,7 +58,11 @@ def uninstallpac(package)
   puts "I ran: 'sudo pacman -R #{package}'"
   puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
-
+def uninstallhb(package)
+  Kernel.system "brew uninstall #{package}"
+  puts "\r"
+  puts "I ran: 'brew uninstall #{package}'"
+end
 def searchdeb(package)
   Kernel.system "sudo apt-cache search #{package}"
   puts "\r"
@@ -51,12 +79,19 @@ def searchpac(package)
   puts "I ran: 'pacman -Ss #{package}'"
   puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
+def searchhb(package)
+  Kernel.system "brew search #{package}"
+  puts "\r"
+  puts "I ran: 'brew search #{package}'"
+end
 
-#Start Program
-puts "Please enter your Operating system or Linux distro (e.g. MacOS, Ubuntu, Linux Mint, Debian, etc.) >> "
+#Detect OS
 osraw = `uname -a`
 osraw.downcase!
-osar = osraw.split(' ')[5]
+os = osraw.split(' ')[5]
+if os == 'darwin' then addbrew() end
+
+#Start Program
 puts ' '
 exitis = 0
 while exitis == 0 do
@@ -173,15 +208,13 @@ while exitis == 0 do
     Kernel.system "touch #{file}"
     puts "\r"
     puts "I ran: 'touch #{file}'"
-#The folowing code is broken for now.
-=begin  when 'change working folder'
+#The folowing code is broken for now. Disregard it.
+when 'change working folder'
     print 'Please enter the name of the folder you like to switch to (e.g. Documents/Folder). >> '
     folder = gets.chomp
     Kernel.system "cd #{folder}"
-    %x[cd #{folder}]
-    `cd #{folder}`
    puts "I ran: 'cd #{file}'"
-=end
+
   when 'list files'
     print 'Please enter the folder you\'d like to list files in (e.g. Documents). >> '
     folder = gets.chomp
@@ -189,7 +222,7 @@ while exitis == 0 do
     puts "\r"
     puts "I ran: 'ls #{folder}'"
 
-#The following code is broken for now.
+#The following code is broken for now. Disregard it.
 =begin
   when 'edit file'
     print 'Please enter the name and location of the file you\'d like to edit (e.g. Documents/report.doc). >> '
