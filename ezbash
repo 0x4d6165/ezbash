@@ -54,8 +54,9 @@ end
 
 #Start Program
 puts "Please enter your Operating system or Linux distro (e.g. MacOS, Ubuntu, Linux Mint, Debian, etc.) >> "
-os = gets.chomp
-os.downcase!
+osraw = `uname -a`
+osraw.downcase!
+osar = osraw.split(' ')[5]
 puts ' '
 exitis = 0
 while exitis == 0 do
@@ -184,7 +185,7 @@ while exitis == 0 do
   when 'list files'
     print 'Please enter the folder you\'d like to list files in (e.g. Documents). >> '
     folder = gets.chomp
-    Kernel.system "ls #{folder}"
+    Kernel.system "ls #{folder} --color=auto"
     puts "\r"
     puts "I ran: 'ls #{folder}'"
 
