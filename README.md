@@ -8,8 +8,8 @@ gem install ezbash
 ```
 
 ##Usage
-To run the application, first, to avoid unnecessary errors, reboot your computer. Then, type this into the terminal:
+To run the application, type this into the terminal:
 ```
 ezbash
 ```
-You will be greeted by a prompt asking which operating system you use. If you use a Linux other than the ones listed, look at that distributors website or on Wikipedia and you should be able to find out the overarching distro (it's probably Debian). Then, list possible commands by entering "help" and get started! Have fun!
+Then, list possible commands by entering "help" and get started! Have fun!
