@@ -6,7 +6,7 @@ def installdeb(package)
   %x[sudo apt-get install #{package}]
   `sudo apt-get install #{package}`
   puts "\r"
-  puts "I ran: 'sudo apt-get install #{package}''
+  puts "I ran: 'sudo apt-get install #{package}'"
 end
 def installrpm(package)
   Kernel.system "sudo yum install #{package}"
