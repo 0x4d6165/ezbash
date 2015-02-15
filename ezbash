@@ -219,7 +219,7 @@ while exitis == 0 do
     puts "\t delete file: deletes a file on your compter"
     puts "\t delete folder: deletes a folder on your computer (type yes at every promt)."
     puts "\t create file: creates an empty text file on your computer (.rb, .py, .java, etc. count as text files)"
-    puts "\t edit file: edits a text file in a bare-bones, quick editor (.rb, .html, .java, etc. count as text files)"
+#    puts "\t edit file: edits a text file in a bare-bones, quick editor (.rb, .html, .java, etc. count as text files)"
     puts "\r"
   when 'exit'
     abort
