@@ -3,21 +3,21 @@ def installdeb(package)
   Kernel.system "sudo apt-get install #{package}"
   %x[sudo apt-get install #{package}]
   `sudo apt-get install #{package}`
-  puts '\r'
+  puts "\r"
   puts 'I ran: "sudo apt-get install #{package}"'
 end
 def installrpm(package)
   Kernel.system "sudo yum install #{package}"
   %x[sudo yum install #{package}]
   `sudo yum install #{package}`
-  puts '\r'
+  puts "\r"
   puts 'I ran: "sudo yum install #{package}"'
 end
 def installpac(package)
   Kernel.system "sudo pacman -S #{package}"
   %x[sudo pacman -S #{package}]
   `sudo pacman -S #{package}`
-  puts '\r'
+  puts "\r"
   puts 'I ran: "sudo pacman -S #{package}"'
   puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
@@ -26,21 +26,21 @@ def uninstalldeb(package)
   Kernel.system "sudo apt-get remove #{package}"
   %x[sudo apt-get remove #{package}]
   `sudo apt-get remove #{package}`
-  puts '\r'
+  puts "\r"
   puts 'I ran: "sudo apt-get remove #{package}"'
 end
 def uninstallrpm(package)
   Kernel.system "sudo yum uninstall #{package}"
   %x[sudo yum uninstall #{package}]
   `sudo yum uninstall #{package}`
-  puts '\r'
+  puts "\r"
   puts 'I ran: "sudo yum uninstall #{package}"'
 end
 def uninstallpac(package)
   Kernel.system "sudo pacman -R #{package}"
   %x[sudo pacman -R #{package}]
   `sudo pacman -R #{package}`
-  puts '\r'
+  puts "\r"
   puts 'I ran: "sudo pacman -R #{package}"'
   puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
@@ -49,21 +49,21 @@ def searchdeb(package)
   Kernel.system "sudo apt-cache search #{package}"
   %x[sudo apt-cache search #{package}]
   `sudo apt-cache search #{package}`
-  puts '\r'
+  puts "\r"
   puts 'I ran: "sudo apt-cache search #{package}"'
 end
 def searchrpm(package)
   Kernel.system "sudo yum search #{package}"
   %x[sudo yum search #{package}]
   `sudo yum search #{package}`
-  puts '\r'
+  puts "\r"
   puts 'I ran: "sudo yum search #{package}"'
 end
 def searchpac(package)
   Kernel.system "pacman -Ss #{package}"
   %x[pacman -Ss #{package}]
   `pacman -Ss #{package}`
-  puts '\r'
+  puts "\r"
   puts 'I ran: "pacman -Ss #{package}"'
   puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
@@ -101,7 +101,7 @@ while exitis == 0 do
     when 'arch'
        installpac(package)
     else
-       print '\r'
+       print "\r"
        puts 'Sorry, I didn\'t recognize you\'re operating system.'
     end
   when 'uninstall'
@@ -124,7 +124,7 @@ while exitis == 0 do
     when 'arch'
        uninstallpac(package)
     else
-       print '\r'
+       print "\r"
        puts 'Sorry, I didn\'t recognize you\'re operating system.'
      end
    when 'search'
@@ -147,7 +147,7 @@ while exitis == 0 do
      when 'arch'
         searchpac(package)
      else
-        print '\r'
+        print "\r"
         puts 'Sorry, I didn\'t recognize you\'re operating system.'
       end
 
@@ -158,56 +158,56 @@ while exitis == 0 do
     puts ' '
     print 'Please enter the destination inclduding the name of the file (e.g. Documents/report.doc) >> '
     cpdest = gets.chomp
-    cpdest.downcase!
-    Kernel.system "cp #{cpfile} #{cpdest}"
-    %x[cp #{cpfile} #{cpdest}]
-    `cp #{cpfile} #{cpdest}`
-    puts '\r'
-    puts 'I ran: "cp #{cpfile} #{cpdest}"'
+    Kernel.system "cp -avr #{cpfile} #{cpdest}"
+    %x[cp -avr #{cpfile} #{cpdest}]
+    `cp -avr #{cpfile} #{cpdest}`
+    puts "\r"
+    puts "I ran: 'cp #{cpfile} #{cpdest}'"
   when 'rename'
     print 'Please enter the path to the file (e.g. Documents/report.doc). >> '
     cpfile = gets.chomp
     puts ' '
     print 'Please enter the new name inclduding the destination you used earlier (e.g. Documents/Essay.doc). >> '
     cpdest = gets.chomp
-    cpdest.downcase!
     Kernel.system "cp #{cpfile} #{cpdest}"
     %x[cp #{cpfile} #{cpdest}]
     `cp #{cpfile} #{cpdest}`
-    puts '\r'
-    puts 'I ran: "cp #{cpfile} #{cpdest}"'
+    puts "\r"
+    puts "I ran: 'cp #{cpfile} #{cpdest}'"
   when 'delete file'
     print 'Please enter the name of the file you\'d like to remove along with its directory (e.g. Documents/sensitive.doc). >> '
     file = gets.chomp
     Kernel.system "rm #{file}"
     %x[rm #{file}]
     `rm #{file}`
-    puts '\r'
-    puts 'I ran: "rm #{file}"'
+    puts "\r"
+    puts "I ran: 'rm #{file}'"
   when 'delete folder'
     print 'Please enter the name of the folder you\'d like to remove along with its directory (e.g. Garbage/, Documents/Garbage/). >> '
     folder = gets.chomp
     Kernel.system "rm -R -i #{folder}"
     %x[rm -R -i #{folder}]
     `rm -R -i #{folder}`
-    puts '\r'
-    puts 'I ran: "rm -R -i #{folder}"'
+    puts "\r"
+    puts "I ran: 'rm -R -i #{folder}'"
   when 'create file'
     print 'Please name your new file along with its directory (e.g. Documents/newfile.doc). >> '
     file = gets.chomp
     Kernel.system "touch #{file}"
     %x[touch #{file}]
     `touch #{file}`
-    puts '\r'
     puts 'I ran: "touch #{file}"'
+#The following code is broken for now.
+=begin
   when 'edit file'
     print 'Please enter the name and location of the file you\'d like to edit (e.g. Documents/report.doc). >> '
     file = gets.chomp
     Kernel.system "nano #{file}"
     %x[nano #{file}]
     `nano #{file}`
-    puts '\r'
-    puts 'I ran: "nano #{file}"'
+    puts "\r"
+    puts "I ran: 'nano #{file}'"
+=end
   when 'help'
     puts "\t install: install new programs or 'packages' on your system"
     puts "\t uninstall: remove programs or 'packages' from your system"
