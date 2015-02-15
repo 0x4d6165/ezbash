@@ -93,8 +93,10 @@ if os == 'darwin' then addbrew() end
 
 #Start Program
 puts ' '
+runOnce = false
 exitis = 0
 while exitis == 0 do
+  if runOnce == true then puts "\r" end
   print "Type 'help' to list possible commands. >> "
   userCommand = gets.chomp
   userCommand.downcase!
@@ -124,6 +126,7 @@ while exitis == 0 do
        print "\r"
        puts 'Sorry, I didn\'t recognize you\'re operating system.'
     end
+    runOnce = true
   when 'uninstall'
     print 'Please enter the name of the package you\'d like to remove. >> '
     package = gets.chomp
@@ -147,6 +150,7 @@ while exitis == 0 do
        print "\r"
        puts 'Sorry, I didn\'t recognize you\'re operating system.'
      end
+     runOnce = true
    when 'search'
      print 'Please enter the package you\'d like to remove. >> '
      package = gets.chomp
@@ -170,7 +174,7 @@ while exitis == 0 do
         print "\r"
         puts 'Sorry, I didn\'t recognize you\'re operating system.'
       end
-
+     runOnce = true
   #File/folder manipulation
   when 'copy'
     print 'Please enter the path to the file (e.g. Downloads/report.doc) >> '
@@ -181,6 +185,7 @@ while exitis == 0 do
     Kernel.system "cp -avr #{cpfile} #{cpdest}"
     puts "\r"
     puts "I ran: 'cp #{cpfile} #{cpdest}'"
+    runOnce = true
   when 'rename'
     print 'Please enter the path to the file (e.g. Documents/report.doc). >> '
     cpfile = gets.chomp
@@ -190,26 +195,30 @@ while exitis == 0 do
     Kernel.system "cp #{cpfile} #{cpdest}"
     puts "\r"
     puts "I ran: 'cp #{cpfile} #{cpdest}'"
+    runOnce = true
   when 'delete file'
     print 'Please enter the name of the file you\'d like to remove along with its directory (e.g. Documents/sensitive.doc). >> '
     file = gets.chomp
     Kernel.system "rm #{file}"
     puts "\r"
     puts "I ran: 'rm #{file}'"
+    runOnce = true
   when 'delete folder'
     print 'Please enter the name of the folder you\'d like to remove along with its directory (e.g. Garbage/, Documents/Garbage/). >> '
     folder = gets.chomp
     Kernel.system "rm -R -i #{folder}"
     puts "\r"
     puts "I ran: 'rm -R -i #{folder}'"
+    runOnce = true
   when 'create file'
     print 'Please name your new file along with its directory (e.g. Documents/newfile.doc). >> '
     file = gets.chomp
     Kernel.system "touch #{file}"
     puts "\r"
     puts "I ran: 'touch #{file}'"
+    runOnce = true
 #The folowing code is broken for now. Disregard it.
-when 'change working folder'
+=begin when 'change working folder'
     print 'Please enter the name of the folder you like to switch to (e.g. Documents/Folder). >> '
     folder = gets.chomp
     Kernel.system "cd #{folder}"
@@ -221,6 +230,7 @@ when 'change working folder'
     Kernel.system "ls #{folder} --color=auto"
     puts "\r"
     puts "I ran: 'ls #{folder}'"
+=end
 
 #The following code is broken for now. Disregard it.
 =begin
