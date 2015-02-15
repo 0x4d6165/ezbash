@@ -198,7 +198,26 @@ while exitis == 0 do
     Kernel.system "touch #{file}"
     %x[touch #{file}]
     `touch #{file}`
+    puts "\r"
     puts "I ran: 'touch #{file}'"
+#The folowing code is broken for now.
+=begin  when 'change working folder'
+    print 'Please enter the name of the folder you like to switch to (e.g. Documents/Folder). >> '
+    folder = gets.chomp
+    Kernel.system "cd #{folder}"
+    %x[cd #{folder}]
+    `cd #{folder}`
+   puts "I ran: 'cd #{file}'"
+=end
+  when 'list files'
+    print 'Please enter the folder you\'d like to list files in (e.g. Documents). >> '
+    folder = gets.chomp
+    Kernel.system "ls #{folder}"
+    %x[ls #{folder}]
+    `ls #{folder}`
+    puts "\r"
+    puts "I ran: 'ls #{folder}'"
+
 #The following code is broken for now.
 =begin
   when 'edit file'
@@ -219,6 +238,8 @@ while exitis == 0 do
     puts "\t delete file: deletes a file on your compter"
     puts "\t delete folder: deletes a folder on your computer (type yes at every promt)."
     puts "\t create file: creates an empty text file on your computer (.rb, .py, .java, etc. count as text files)"
+    puts "\t change working folder: change the folder you\'ll be working in (e.g. Documents)"
+    puts "\t list files: list all of the files in a given folder (e.g. Downloads)"
 #    puts "\t edit file: edits a text file in a bare-bones, quick editor (.rb, .html, .java, etc. count as text files)"
     puts "\t exit: exits ezbash"
     puts "\r"
