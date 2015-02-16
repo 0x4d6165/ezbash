@@ -64,14 +64,14 @@ def uninstallhb(package)
   puts "I ran: 'brew uninstall #{package}'"
 end
 def searchdeb(package)
-  Kernel.system "sudo apt-cache search #{package}"
+  Kernel.system "apt-cache search #{package}"
   puts "\r"
-  puts "I ran: 'sudo apt-cache search #{package}'"
+  puts "I ran: 'apt-cache search #{package}'"
 end
 def searchrpm(package)
-  Kernel.system "sudo yum search #{package}"
+  Kernel.system "yum search #{package}"
   puts "\r"
-  puts "I ran: 'sudo yum search #{package}'"
+  puts "I ran: 'yum search #{package}'"
 end
 def searchpac(package)
   Kernel.system "pacman -Ss #{package}"

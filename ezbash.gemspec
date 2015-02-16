@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name        = 'ezbash'
-  s.version     = '0.0.3'
+  s.version     = '0.5.0'
   s.date        = '2015-02-15'
-  s.summary     = "Ezbash!"
+  s.summary     = "ezbash!"
   s.description = "Users are thrown into a simplified shell with only a 'help' command as a guide."
   s.authors     = ["Logan Saunders"]
   s.email       = 'timandmoby@gmail.com'
