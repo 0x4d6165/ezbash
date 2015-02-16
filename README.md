@@ -1,5 +1,5 @@
 # ezbash
-ezbash (yes, it's uncapitalized on purpose) is way to ease your way into using the MacOS* or Linux terminal, that most powerful of applications so, lets get started!
+ezbash (yes, it's uncapitalized on purpose) is a tool created to help people ease their way into using the MacOS* or Linux terminal, that most powerful of applications.
 
 *As of right now, MacOS cannot install applications. I apologize for this shortcoming
 ##Installation
