@@ -152,7 +152,7 @@ while exitis == 0 do
      end
      runOnce = true
    when 'search'
-     print 'Please enter the package you\'d like to remove. >> '
+     print 'Please enter the package you\'d like to search for. >> '
      package = gets.chomp
      package.downcase!
      case os
