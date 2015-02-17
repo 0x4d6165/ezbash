@@ -12,7 +12,7 @@ def addbrew()
         Kernel.system "ruby -e '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)'"
         userselect = true
       elsif userreply == 'no'
-        puts 'That\'s fine! Just keep in mind, the install, uninstall, and search commands won\'t work for you'
+        puts 'That\'s fine! Just keep in mind, the install, uninstall, and search commands won\'t work for you.'
         userselect = true
       else
         puts 'Please say yes or no.'
@@ -88,8 +88,9 @@ end
 #Detect OS
 osraw = `uname -a`
 osraw.downcase!
-os = osraw.split(' ')[5]
-if os == 'darwin' then addbrew() end
+oslin = osraw.split(' ')[5]
+osdar = osraw.split(' ')[3]
+if osdar == 'darwin' then addbrew() end
 
 #Start Program
 puts ' '
@@ -104,10 +105,10 @@ while exitis == 0 do
   case userCommand
   #Package management
   when 'install'
-    print 'Please enter the package you\'d like to install. >> '
+    print 'Please enter the name of the program you\'d like to install. >> '
     package = gets.chomp
     package.downcase!
-    case os
+    case oslin
     when 'ubuntu'
       installdeb(package)
     when 'debian'
@@ -123,15 +124,19 @@ while exitis == 0 do
     when 'arch'
        installpac(package)
     else
-       print "\r"
-       puts 'Sorry, I didn\'t recognize you\'re operating system.'
+       if osdar == 'darwin'
+         installhb(package)
+       else
+          print "\r"
+          puts 'Sorry, I didn\'t recognize you\'re operating system.'
+        end
     end
     runOnce = true
   when 'uninstall'
-    print 'Please enter the name of the package you\'d like to remove. >> '
+    print 'Please enter the name of the program you\'d like to remove. >> '
     package = gets.chomp
     package.downcase
-    case os
+    case oslin
     when 'ubuntu'
       uninstalldeb(package)
     when 'debian'
@@ -147,15 +152,19 @@ while exitis == 0 do
     when 'arch'
        uninstallpac(package)
     else
-       print "\r"
-       puts 'Sorry, I didn\'t recognize you\'re operating system.'
+      if osdar == 'darwin'
+        uninstallhb(package)
+      else
+         print "\r"
+         puts 'Sorry, I didn\'t recognize you\'re operating system.'
+       end
      end
      runOnce = true
    when 'search'
-     print 'Please enter the package you\'d like to search for. >> '
+     print 'Please enter the name of the program you\'d like to search for. >> '
      package = gets.chomp
      package.downcase!
-     case os
+     case oslin
      when 'ubuntu'
        searchdeb(package)
      when 'debian'
@@ -171,8 +180,12 @@ while exitis == 0 do
      when 'arch'
         searchpac(package)
      else
-        print "\r"
-        puts 'Sorry, I didn\'t recognize you\'re operating system.'
+       if osdar == 'darwin'
+         searchhb(package)
+       else
+          print "\r"
+          puts 'Sorry, I didn\'t recognize you\'re operating system.'
+        end
       end
      runOnce = true
   #File/folder manipulation
