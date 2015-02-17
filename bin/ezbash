@@ -2,7 +2,7 @@
 
 #Define methods
 def addbrew()
-  if 'which brew' == ''
+  if `which brew` == ''
     puts 'You appear to be running MacOS without Homebrew installed.'
     puts "If you don\'t know what Homebrew is, visit 'brew.sh', if you do and would like to install it, type 'yes'. >> "
     userreply = gets.chomp
