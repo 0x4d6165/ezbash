@@ -1,5 +1,6 @@
 # ezbash
 [![Gem Version](https://badge.fury.io/rb/ezbash.svg)](http://badge.fury.io/rb/ezbash)
+
 ezbash (yes, it's uncapitalized on purpose) is a tool created to help people ease their way into using the MacOS or Linux terminal, that most powerful of applications.
 
 ##Installation
