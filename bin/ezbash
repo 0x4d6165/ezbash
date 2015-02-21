@@ -95,7 +95,7 @@ if osdar == 'darwin' then addbrew() end
 #Start Program
 puts ' '
 runOnce = false
-exitis = 0
+exitis  = 0
 while exitis == 0 do
   if runOnce == true then puts "\r" end
   print "Type 'help' to list possible commands. >> "
