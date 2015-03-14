@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'ezbash'
-  s.version     = '0.5.3'
+  s.version     = '0.5.4'
   s.date        = '2015-02-17'
   s.summary     = "ezbash!"
   s.description = "Users are thrown into a simplified shell with only a 'help' command as a guide."
