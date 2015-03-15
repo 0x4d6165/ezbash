@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require "table_print"
+require "pretty_table"
 
 #Define methods
 def addbrew()
@@ -9,11 +9,11 @@ def addbrew()
     userreply = gets.chomp
     userreply.downcase!
     until userselect == true
-      if userreply == 'yes'S
+      if userreply == 'yes'
         Kernel.system "ruby -e '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)'"
         userselect = true
       elsif userreply == 'no'
-        puts 'That\'s fine! Just keep in mind, the install, uninstall, and search commands won\'t work for you.'
+        puts "That\'s fine! Just keep in mind, the install, uninstall, and search commands won\'t work for you."
         userselect = true
       else
         puts 'Please say yes or no.'
@@ -269,34 +269,25 @@ while exitis == 0 do
     program = gets.chomp
     Kernel.system "#{folder}./#{program}"
   when 'help'
-    puts "\t install: install new programs or 'packages' on your system"
-    puts "\r"
-    puts "\t uninstall: remove programs or 'packages' from your system"
-    puts "\r"
-    puts "\t search: search for a program that can be installed with the aforementioned 'install' command"
-    puts "\r"
-    puts "\t copy: copies a file or folder to another place"
-    puts "\r"
-    puts "\t rename: renames a file on your computer"
-    puts "\r"
-    puts "\t delete file: deletes a file on your compter"
-    puts "\r"
-    puts "\t delete folder: deletes a folder on your computer (type yes at every promt)."
-    puts "\r"
-    puts "\t create file: creates an empty text file on your computer (.rb, .py, .java, etc. count as text files)"
-    puts "\r"
-    puts "\t change working folder: change the folder you\'ll be working in (e.g. Documents)"
-    puts "\r"
-    puts "\t list files: list all of the files in a given folder (e.g. Downloads)"
-    puts "\r"
+    headers = [ 'Command', 'Action']
+    commands = [
+      ["install", "install new programs or 'packages' on your system"],
+      ["uninstall", "remove programs or 'packages' from your system"],
+      ["search", "search for a program that can be installed with the aforementioned 'install' command"],
+      ["copy", "copies a file or folder to another place"],
+      ["rename", "renames a file on your computer"],
+      ["delete file", "deletes a file on your compter"],
+      ["delete folder", "deletes a folder on your computer (type yes at every promt)."],
+      ["create file", "creates an empty text file on your computer (.rb, .py, .java, etc. count as text files)"],
+      ["change working folder", "change the folder you\'ll be working in (e.g. Documents)"],
+      ["list files", "list all of the files in a given folder (e.g. Downloads)"],
+      ["compile", "compiles a c++ file (e.g. foo.cpp)"],
+      ["run c++ program", "runs a c++ program compiled with the aforementioned command"],
+      ["exit", "exits ezbash"] ]
 #   puts "\t edit file: edits a text file in a bare-bones, quick editor (.rb, .html, .java, etc. count as text files)"
 #   puts "\r"
-    puts "\t compile: compiles a c++ file (e.g. foo.cpp)"
-    puts "\r"
-    puts "\t run c++ program: runs a c++ program compiled with the aforementioned command"
-    puts "\r"
-    puts "\t exit: exits ezbash"
-    puts "\r"
+      puts PrettyTable.new(commands, headers).to_s
+      puts "\r"
   when 'exit'
     abort
   else
