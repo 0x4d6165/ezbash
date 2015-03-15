@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require "table_print"
 
 #Define methods
 def addbrew()
@@ -8,7 +9,7 @@ def addbrew()
     userreply = gets.chomp
     userreply.downcase!
     until userselect == true
-      if userreply == 'yes'
+      if userreply == 'yes'S
         Kernel.system "ruby -e '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)'"
         userselect = true
       elsif userreply == 'no'

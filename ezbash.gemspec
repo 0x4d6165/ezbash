@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'ezbash'
-  s.version     = '0.5.4'
+  s.version     = '1.0.0'
   s.date        = '2015-02-17'
   s.summary     = "ezbash!"
   s.description = "Users are thrown into a simplified shell with only a 'help' command as a guide."
@@ -9,4 +9,5 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/gigavinyl/ezbash.git'
   s.license     = 'GNU GPL v2'
   s.executables << 'ezbash'
+  s.add_runtime_dependency 'table_print', '~>0'
 end
