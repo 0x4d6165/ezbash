@@ -2,7 +2,7 @@
 require "pretty_table"
 
 #Define methods
-def addbrew()
+def addBrew()
   if `which brew` == ''
     puts 'You appear to be running MacOS without Homebrew installed.'
     puts "If you don\'t know what Homebrew is, visit 'brew.sh', if you do and would like to install it, type 'yes'. >> "
@@ -22,76 +22,76 @@ def addbrew()
   end
 end
 
-def installdeb(package)
+def installDeb(package)
   Kernel.system "sudo apt-get install #{package}"
   puts "\r"
   puts "I ran: 'sudo apt-get install #{package}'"
 end
-def installrpm(package)
+def installRpm(package)
   Kernel.system "sudo yum install #{package}"
   puts "\r"
   puts "I ran: 'sudo yum install #{package}'"
 end
-def installpac(package)
+def installPac(package)
   Kernel.system "sudo pacman -S #{package}"
   puts "\r"
   puts "I ran: 'sudo pacman -S #{package}'"
   puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
-def installhb(package)
+def installHb(package)
   Kernel.system "brew install #{package}"
   puts "\r"
   puts "I ran: 'brew install #{package}'"
 end
-def uninstalldeb(package)
+def uninstallDeb(package)
   Kernel.system "sudo apt-get remove #{package}"
   puts "\r"
   puts "I ran: 'sudo apt-get remove #{package}'"
 end
-def uninstallrpm(package)
+def uninstallRpm(package)
   Kernel.system "sudo yum uninstall #{package}"
   puts "\r"
   puts "I ran: 'sudo yum uninstall #{package}'"
 end
-def uninstallpac(package)
+def uninstallPac(package)
   Kernel.system "sudo pacman -R #{package}"
   puts "\r"
   puts "I ran: 'sudo pacman -R #{package}'"
   puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
-def uninstallhb(package)
+def uninstallHb(package)
   Kernel.system "brew uninstall #{package}"
   puts "\r"
   puts "I ran: 'brew uninstall #{package}'"
 end
-def searchdeb(package)
+def searchDeb(package)
   Kernel.system "apt-cache search #{package}"
   puts "\r"
   puts "I ran: 'apt-cache search #{package}'"
 end
-def searchrpm(package)
+def searchRpm(package)
   Kernel.system "yum search #{package}"
   puts "\r"
   puts "I ran: 'yum search #{package}'"
 end
-def searchpac(package)
+def searchPac(package)
   Kernel.system "pacman -Ss #{package}"
   puts "\r"
   puts "I ran: 'pacman -Ss #{package}'"
   puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
-def searchhb(package)
+def searchHb(package)
   Kernel.system "brew search #{package}"
   puts "\r"
   puts "I ran: 'brew search #{package}'"
 end
 
 #Detect OS
-osraw = `uname -a`
-osraw.downcase!
-oslin = osraw.split(' ')[5]
-osdar = osraw.split(' ')[3]
-if osdar == 'darwin' then addbrew() end
+osRaw = `uname -a`
+osRaw.downcase!
+osLin = osRaw.split(' ')[5]
+osDar = osRaw.split(' ')[3]
+if osDar == 'darwin' then addBrew() end
 
 #Start Program
 puts ' '
@@ -111,22 +111,22 @@ while exitis == 0 do
     package.downcase!
     case oslin
     when 'ubuntu'
-      installdeb(package)
+      installDeb(package)
     when 'debian'
-      installdeb(package)
+      installDeb(package)
     when 'linux mint'
-      installdeb(package)
+      installDeb(package)
     when 'redhat'
-       installrpm(package)
+       installRpm(package)
     when 'fedora'
-       installrpm(package)
+       installRpm(package)
     when 'open suse'
-        installrpm(package)
+        installRpm(package)
     when 'arch'
-       installpac(package)
+       installPac(package)
     else
        if osdar == 'darwin'
-         installhb(package)
+         installHb(package)
        else
           print "\r"
           puts 'Sorry, I didn\'t recognize you\'re operating system.'
@@ -139,22 +139,22 @@ while exitis == 0 do
     package.downcase
     case oslin
     when 'ubuntu'
-      uninstalldeb(package)
+      uninstallDeb(package)
     when 'debian'
-      uninstalldeb(package)
+      uninstallDeb(package)
     when 'linux mint'
-      uninstalldeb(package)
+      uninstallDeb(package)
     when 'redhat'
-       uninstallrpm(package)
+       uninstallRpm(package)
     when 'fedora'
-       uninstallrpm(package)
+       uninstallRpm(package)
     when 'open suse'
-        uninstallrpm(package)
+        uninstallRpm(package)
     when 'arch'
-       uninstallpac(package)
+       uninstallPac(package)
     else
       if osdar == 'darwin'
-        uninstallhb(package)
+        uninstallHb(package)
       else
          print "\r"
          puts 'Sorry, I didn\'t recognize you\'re operating system.'
@@ -167,22 +167,22 @@ while exitis == 0 do
      package.downcase!
      case oslin
      when 'ubuntu'
-       searchdeb(package)
+       searchDeb(package)
      when 'debian'
-       searchdeb(package)
+       searchDeb(package)
      when 'linux mint'
-       searchdeb(package)
+       searchDeb(package)
      when 'redhat'
-        searchrpm(package)
+        searchRpm(package)
      when 'fedora'
-        searchrpm(package)
+        searchRpm(package)
      when 'open suse'
-         searchrpm(package)
+         searchRpm(package)
      when 'arch'
-        searchpac(package)
+        searchPac(package)
      else
        if osdar == 'darwin'
-         searchhb(package)
+         searchHb(package)
        else
           print "\r"
           puts 'Sorry, I didn\'t recognize you\'re operating system.'
