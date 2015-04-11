@@ -165,7 +165,7 @@ while exitis == 0 do
      print 'Please enter the name of the program you\'d like to search for. >> '
      package = gets.chomp
      package.downcase!
-     case oslin
+	  case osLin
      when 'ubuntu'
        searchDeb(package)
      when 'debian'
