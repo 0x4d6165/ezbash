@@ -86,7 +86,7 @@ def searchHb(package)
   puts "I ran: 'brew search #{package}'"
 end
 
-#Detect OS
+#Detect OS 
 osRaw = `uname -a`
 osRaw.downcase!
 osLin = osRaw.split(' ')[5]
@@ -109,7 +109,7 @@ while exitis == 0 do
     print 'Please enter the name of the program you\'d like to install. >> '
     package = gets.chomp
     package.downcase!
-    case oslin
+	 case osLin
     when 'ubuntu'
       installDeb(package)
     when 'debian'
@@ -137,8 +137,8 @@ while exitis == 0 do
     print 'Please enter the name of the program you\'d like to remove. >> '
     package = gets.chomp
     package.downcase
-    case oslin
-    when 'ubuntu'
+    case osLin 
+	 when 'ubuntu'
       uninstallDeb(package)
     when 'debian'
       uninstallDeb(package)
@@ -231,30 +231,7 @@ while exitis == 0 do
     puts "\r"
     puts "I ran: 'touch #{file}'"
     runOnce = true
-#The folowing code is broken for now. Disregard it.
-=begin when 'change working folder'
-    print 'Please enter the name of the folder you like to switch to (e.g. Documents/Folder). >> '
-    folder = gets.chomp
-    Kernel.system "cd #{folder}"
-   puts "I ran: 'cd #{file}'"
-
-  when 'list files'
-    print 'Please enter the folder you\'d like to list files in (e.g. Documents). >> '
-    folder = gets.chomp
-    Kernel.system "ls #{folder} --color=auto"
-    puts "\r"
-    puts "I ran: 'ls #{folder}'"
-=end
-
-#The following code is broken for now. Disregard it.
-=begin
-  when 'edit file'
-    print 'Please enter the name and location of the file you\'d like to edit (e.g. Documents/report.doc). >> '
-    file = gets.chomp
-    Kernel.system "nano #{file}"
-    puts "\r"
     puts "I ran: 'nano #{file}'"
-=end
   when "compile"
     print 'Please enter the location of the c++ code you\'d like to compile (e.g. Projects/helloworld.cpp). '
     code = gets.chomp
@@ -283,9 +260,7 @@ while exitis == 0 do
       ["list files", "list all of the files in a given folder (e.g. Downloads)"],
       ["compile", "compiles a c++ file (e.g. foo.cpp)"],
       ["run c++ program", "runs a c++ program compiled with the aforementioned command"],
-      ["exit", "exits ezbash"] ]
-#   puts "\t edit file: edits a text file in a bare-bones, quick editor (.rb, .html, .java, etc. count as text files)"
-#   puts "\r"
+      ["exit", "exits ezbash"]] 
       puts PrettyTable.new(commands, headers).to_s
       puts "\r"
   when 'exit'
