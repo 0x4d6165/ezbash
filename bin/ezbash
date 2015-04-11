@@ -86,7 +86,7 @@ def searchHb(package)
   puts "I ran: 'brew search #{package}'"
 end
 
-#Detect OS
+#Detect OS 
 osRaw = `uname -a`
 osRaw.downcase!
 osLin = osRaw.split(' ')[5]
