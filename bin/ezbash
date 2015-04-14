@@ -1,20 +1,20 @@
 #!/usr/bin/env ruby
-require "pretty_table"
+require 'pretty_table'
 
 #Define methods
 def addBrew()
   if `which brew` == ''
     puts 'You appear to be running MacOS without Homebrew installed.'
     puts "If you don\'t know what Homebrew is, visit 'brew.sh', if you do and would like to install it, type 'yes'. >> "
-    userreply = gets.chomp
-    userreply.downcase!
-    until userselect == true
-      if userreply == 'yes'
+    userReply = gets.chomp
+    userReply.downcase!
+    until userSelect == true
+      if userReply == 'yes'
         Kernel.system "ruby -e '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)'"
-        userselect = true
-      elsif userreply == 'no'
+        userSelect = true
+      elsif userReply == 'no'
         puts "That\'s fine! Just keep in mind, the install, uninstall, and search commands won\'t work for you."
-        userselect = true
+        userSelect = true
       else
         puts 'Please say yes or no.'
       end
@@ -96,8 +96,8 @@ if osDar == 'darwin' then addBrew() end
 #Start Program
 puts ' '
 runOnce = false
-exitis  = 0
-while exitis == 0 do
+exitIs  = 0
+while exitIs == 0 do
   if runOnce == true then puts "\r" end
   print "Type 'help' to list possible commands. >> "
   userCommand = gets.chomp
@@ -192,23 +192,23 @@ while exitis == 0 do
   #File/folder manipulation
   when 'copy'
     print 'Please enter the path to the file (e.g. Downloads/report.doc) >> '
-    cpfile = gets.chomp
+    cpFile = gets.chomp
     puts ' '
     print 'Please enter the destination inclduding the name of the file (e.g. Documents/report.doc) >> '
-    cpdest = gets.chomp
-    Kernel.system "cp -avr #{cpfile} #{cpdest}"
+    cpDest = gets.chomp
+    Kernel.system "cp -avr #{cpFile} #{cpDest}"
     puts "\r"
-    puts "I ran: 'cp #{cpfile} #{cpdest}'"
+    puts "I ran: 'cp #{cpFile} #{cpDest}'"
     runOnce = true
   when 'rename'
     print 'Please enter the path to the file (e.g. Documents/report.doc). >> '
-    cpfile = gets.chomp
+    cpFile = gets.chomp
     puts ' '
     print 'Please enter the new name inclduding the destination you used earlier (e.g. Documents/Essay.doc). >> '
-    cpdest = gets.chomp
-    Kernel.system "cp #{cpfile} #{cpdest}"
+    cpDest = gets.chomp
+    Kernel.system "cp #{cpFile} #{cpDest}"
     puts "\r"
-    puts "I ran: 'cp #{cpfile} #{cpdest}'"
+    puts "I ran: 'cp #{cpFile} #{cpDest}'"
     runOnce = true
   when 'delete file'
     print 'Please enter the name of the file you\'d like to remove along with its directory (e.g. Documents/sensitive.doc). >> '
