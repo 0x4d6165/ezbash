@@ -86,7 +86,7 @@ def searchHb(package)
   puts "I ran: 'brew search #{package}'"
 end
 
-#Detect OS 
+#Detect OS
 osRaw = `uname -a`
 osRaw.downcase!
 osLin = osRaw.split(' ')[5]
@@ -109,7 +109,7 @@ while exitIs == 0 do
     print 'Please enter the name of the program you\'d like to install. >> '
     package = gets.chomp
     package.downcase!
-	 case osLin
+    case osLin
     when 'ubuntu'
       installDeb(package)
     when 'debian'
@@ -137,8 +137,8 @@ while exitIs == 0 do
     print 'Please enter the name of the program you\'d like to remove. >> '
     package = gets.chomp
     package.downcase
-    case osLin 
-	 when 'ubuntu'
+   case osLin
+   when 'ubuntu'
       uninstallDeb(package)
     when 'debian'
       uninstallDeb(package)
@@ -165,7 +165,7 @@ while exitIs == 0 do
      print 'Please enter the name of the program you\'d like to search for. >> '
      package = gets.chomp
      package.downcase!
-	  case osLin
+     case osLin
      when 'ubuntu'
        searchDeb(package)
      when 'debian'
@@ -260,7 +260,7 @@ while exitIs == 0 do
       ["list files", "list all of the files in a given folder (e.g. Downloads)"],
       ["compile", "compiles a c++ file (e.g. foo.cpp)"],
       ["run c++ program", "runs a c++ program compiled with the aforementioned command"],
-      ["exit", "exits ezbash"]] 
+      ["exit", "exits ezbash"]]
       puts PrettyTable.new(commands, headers).to_s
       puts "\r"
   when 'exit'
