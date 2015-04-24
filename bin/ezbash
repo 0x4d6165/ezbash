@@ -32,12 +32,6 @@ def installRpm(package)
   puts "\r"
   puts "I ran: 'sudo yum install #{package}'"
 end
-def installPac(package)
-  Kernel.system "sudo pacman -S #{package}"
-  puts "\r"
-  puts "I ran: 'sudo pacman -S #{package}'"
-  puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
-end
 def installHb(package)
   Kernel.system "brew install #{package}"
   puts "\r"
@@ -53,12 +47,6 @@ def uninstallRpm(package)
   puts "\r"
   puts "I ran: 'sudo yum uninstall #{package}'"
 end
-def uninstallPac(package)
-  Kernel.system "sudo pacman -R #{package}"
-  puts "\r"
-  puts "I ran: 'sudo pacman -R #{package}'"
-  puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
-end
 def uninstallHb(package)
   Kernel.system "brew uninstall #{package}"
   puts "\r"
@@ -73,12 +61,6 @@ def searchRpm(package)
   Kernel.system "yum search #{package}"
   puts "\r"
   puts "I ran: 'yum search #{package}'"
-end
-def searchPac(package)
-  Kernel.system "pacman -Ss #{package}"
-  puts "\r"
-  puts "I ran: 'pacman -Ss #{package}'"
-  puts 'Shouldn\'t you know how to use pacman if you\'re using Arch? Just kidding.'
 end
 def searchHb(package)
   Kernel.system "brew search #{package}"
@@ -122,14 +104,15 @@ while exitIs == 0 do
        installRpm(package)
     when 'open suse'
         installRpm(package)
-    when 'arch'
-       installPac(package)
     else
        if osDar == 'darwin'
          installHb(package)
+       elsif osArch == 'ARCH'
+         installPac(package)
        else
           print "\r"
-          puts 'Sorry, I didn\'t recognize you\'re operating system.'
+          puts 'Sorry, I didn\'t recognize your operating system.'
+          puts osArch
         end
     end
     runOnce = true
@@ -150,14 +133,12 @@ while exitIs == 0 do
        uninstallRpm(package)
     when 'open suse'
         uninstallRpm(package)
-    when 'arch'
-       uninstallPac(package)
     else
       if osDar == 'darwin'
         uninstallHb(package)
       else
          print "\r"
-         puts 'Sorry, I didn\'t recognize you\'re operating system.'
+         puts 'Sorry, I didn\'t recognize your operating system.'
        end
      end
      runOnce = true
@@ -178,14 +159,12 @@ while exitIs == 0 do
         searchRpm(package)
      when 'open suse'
          searchRpm(package)
-     when 'arch'
-        searchPac(package)
      else
        if osDar == 'darwin'
          searchHb(package)
        else
           print "\r"
-          puts 'Sorry, I didn\'t recognize you\'re operating system.'
+          puts 'Sorry, I didn\'t recognize your operating system.'
         end
       end
      runOnce = true
@@ -194,7 +173,7 @@ while exitIs == 0 do
     print 'Please enter the path to the file (e.g. Downloads/report.doc) >> '
     cpFile = gets.chomp
     puts ' '
-    print 'Please enter the destination inclduding the name of the file (e.g. Documents/report.doc) >> '
+    print 'Please enter the destination including the name of the file (e.g. Documents/report.doc) >> '
     cpDest = gets.chomp
     Kernel.system "cp -avr #{cpFile} #{cpDest}"
     puts "\r"
@@ -204,7 +183,7 @@ while exitIs == 0 do
     print 'Please enter the path to the file (e.g. Documents/report.doc). >> '
     cpFile = gets.chomp
     puts ' '
-    print 'Please enter the new name inclduding the destination you used earlier (e.g. Documents/Essay.doc). >> '
+    print 'Please enter the new name including the destination you used earlier (e.g. Documents/Essay.doc). >> '
     cpDest = gets.chomp
     Kernel.system "cp #{cpFile} #{cpDest}"
     puts "\r"
@@ -238,7 +217,6 @@ while exitIs == 0 do
     puts "\r"
     puts "I ran: 'touch #{file}'"
     runOnce = true
-    puts "I ran: 'nano #{file}'"
   when "compile"
     print 'Please enter the location of the c++ code you\'d like to compile (e.g. Projects/helloworld.cpp). >> '
     code = gets.chomp
