@@ -37,6 +37,11 @@ def installHb(package)
   puts "\r"
   puts "I ran: 'brew install #{package}'"
 end
+def installPac(package)
+  Kernel.system "sudo pacman -S #{package}"
+  puts "\r"
+  puts "I ran: 'sudo pacman -S #{package}'"
+end
 def uninstallDeb(package)
   Kernel.system "sudo apt-get remove #{package}"
   puts "\r"
@@ -51,6 +56,11 @@ def uninstallHb(package)
   Kernel.system "brew uninstall #{package}"
   puts "\r"
   puts "I ran: 'brew uninstall #{package}'"
+end
+def uninstallPac(package)
+  Kernel.system "sudo pacman -R #{package}"
+  puts "\r"
+  puts "I ran: 'sudo pacman -R #{package}'"
 end
 def searchDeb(package)
   Kernel.system "apt-cache search #{package}"
@@ -67,12 +77,19 @@ def searchHb(package)
   puts "\r"
   puts "I ran: 'brew search #{package}'"
 end
+def searchPac(package)
+  Kernel.system "sudo pacman -Ss #{package}"
+  puts "\r"
+  puts "I ran: 'sudo pacman -Ss #{package}'"
+end
 
 #Detect OS
 osRaw = `uname -a`
 osRaw.downcase!
 osLin = osRaw.split(' ')[5]
 osDar = osRaw.split(' ')[3]
+osArchRaw = osRaw.split(' ')[2]
+osArch = osArchRaw.split('-')[2]
 if osDar == 'darwin' then addBrew() end
 
 #Start Program
@@ -99,76 +116,79 @@ while exitIs == 0 do
     when 'linux mint'
       installDeb(package)
     when 'redhat'
-       installRpm(package)
+      installRpm(package)
     when 'fedora'
-       installRpm(package)
+      installRpm(package)
     when 'open suse'
-        installRpm(package)
+      installRpm(package)
     else
-       if osDar == 'darwin'
-         installHb(package)
-       elsif osArch == 'ARCH'
-         installPac(package)
-       else
-          print "\r"
-          puts 'Sorry, I didn\'t recognize your operating system.'
-          puts osArch
-        end
+      if osDar == 'darwin'
+        installHb(package)
+      elsif osArch == 'arch'
+        installPac(package)
+      else
+        print "\r"
+        puts 'Sorry, I didn\'t recognize your operating system.'
+      end
     end
     runOnce = true
   when 'uninstall'
     print 'Please enter the name of the program you\'d like to remove. >> '
     package = gets.chomp
     package.downcase
-   case osLin
-   when 'ubuntu'
+    case osLin
+    when 'ubuntu'
       uninstallDeb(package)
     when 'debian'
       uninstallDeb(package)
     when 'linux mint'
       uninstallDeb(package)
     when 'redhat'
-       uninstallRpm(package)
+      uninstallRpm(package)
     when 'fedora'
-       uninstallRpm(package)
+      uninstallRpm(package)
     when 'open suse'
-        uninstallRpm(package)
+      uninstallRpm(package)
     else
       if osDar == 'darwin'
         uninstallHb(package)
+      elsif osArch == 'arch'
+        uninstallPac(package)
       else
-         print "\r"
-         puts 'Sorry, I didn\'t recognize your operating system.'
-       end
-     end
-     runOnce = true
-   when 'search'
-     print 'Please enter the name of the program you\'d like to search for. >> '
-     package = gets.chomp
-     package.downcase!
-     case osLin
-     when 'ubuntu'
-       searchDeb(package)
-     when 'debian'
-       searchDeb(package)
-     when 'linux mint'
-       searchDeb(package)
-     when 'redhat'
-        searchRpm(package)
-     when 'fedora'
-        searchRpm(package)
-     when 'open suse'
-         searchRpm(package)
-     else
-       if osDar == 'darwin'
-         searchHb(package)
-       else
-          print "\r"
-          puts 'Sorry, I didn\'t recognize your operating system.'
-        end
+        print "\r"
+        puts 'Sorry, I didn\'t recognize your operating system.'
       end
-     runOnce = true
-  #File/folder manipulation
+    end
+    runOnce = true
+  when 'search'
+    print 'Please enter the name of the program you\'d like to search for. >> '
+    package = gets.chomp
+    package.downcase!
+    case osLin
+    when 'ubuntu'
+      searchDeb(package)
+    when 'debian'
+      searchDeb(package)
+    when 'linux mint'
+      searchDeb(package)
+    when 'redhat'
+      searchRpm(package)
+    when 'fedora'
+      searchRpm(package)
+    when 'open suse'
+      searchRpm(package)
+    else
+      if osDar == 'darwin'
+        searchHb(package)
+      elsif osArch == 'arch'
+        searchPac(package)
+      else
+        print "\r"
+        puts 'Sorry, I didn\'t recognize your operating system.'
+      end
+    end
+    runOnce = true
+    #File/folder manipulation
   when 'copy'
     print 'Please enter the path to the file (e.g. Downloads/report.doc) >> '
     cpFile = gets.chomp
@@ -246,8 +266,8 @@ while exitIs == 0 do
       ["compile", "compiles a c++ file (e.g. foo.cpp)"],
       ["run c++ program", "runs a c++ program compiled with the aforementioned command"],
       ["exit", "exits ezbash"]]
-      puts PrettyTable.new(commands, headers).to_s
-      puts "\r"
+    puts PrettyTable.new(commands, headers).to_s
+    puts "\r"
   when 'exit'
     abort
   else
