@@ -242,8 +242,8 @@ while exitIs == 0 do
     code = gets.chomp
     print 'Please enter the name you\'d like to give your compiled program. >> '
     name = gets.chomp
-    Kernel.system "g++ -o #{name} #{code}"
-    puts "I ran: 'g++ -o #{name} #{code}'."
+    Kernel.system "g++ #{code} -o #{name}"
+    puts "I ran: 'g++ #{code} -o #{name}'."
   when "run c++ program"
     print 'Please enter the folder your program is contained in (e.g. Documents, Projects/myfantsticproject, etc.). >> '
     folder = gets.chomp
