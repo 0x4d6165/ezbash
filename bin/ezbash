@@ -88,6 +88,7 @@ osRaw = `uname -a`
 osRaw.downcase!
 osLin = osRaw.split(' ')[5]
 osDar = osRaw.split(' ')[3]
+osUbu = osDar.split('-')[1]
 osArchRaw = osRaw.split(' ')[2]
 osArch = osArchRaw.split('-')[2]
 if osDar == 'darwin' then addBrew() end
@@ -109,8 +110,6 @@ while exitIs == 0 do
     package = gets.chomp
     package.downcase!
     case osLin
-    when 'ubuntu'
-      installDeb(package)
     when 'debian'
       installDeb(package)
     when 'linux mint'
@@ -126,6 +125,8 @@ while exitIs == 0 do
         installHb(package)
       elsif osArch == 'arch'
         installPac(package)
+      elsif osUbu == "ubuntu"
+        installDeb(package)
       else
         print "\r"
         puts 'Sorry, I didn\'t recognize your operating system.'
@@ -137,8 +138,6 @@ while exitIs == 0 do
     package = gets.chomp
     package.downcase
     case osLin
-    when 'ubuntu'
-      uninstallDeb(package)
     when 'debian'
       uninstallDeb(package)
     when 'linux mint'
@@ -154,6 +153,8 @@ while exitIs == 0 do
         uninstallHb(package)
       elsif osArch == 'arch'
         uninstallPac(package)
+      elsif osUbu == "ubuntu"
+        installDeb(package)
       else
         print "\r"
         puts 'Sorry, I didn\'t recognize your operating system.'
@@ -165,8 +166,6 @@ while exitIs == 0 do
     package = gets.chomp
     package.downcase!
     case osLin
-    when 'ubuntu'
-      searchDeb(package)
     when 'debian'
       searchDeb(package)
     when 'linux mint'
@@ -182,6 +181,8 @@ while exitIs == 0 do
         searchHb(package)
       elsif osArch == 'arch'
         searchPac(package)
+      elsif osUbu == "ubuntu"
+        installDeb(package)
       else
         print "\r"
         puts 'Sorry, I didn\'t recognize your operating system.'
