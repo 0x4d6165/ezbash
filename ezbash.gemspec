@@ -9,6 +9,6 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/gigavinyl/ezbash.git'
   s.license     = 'GNU GPL v2'
   s.executables << 'ezbash'
-  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rake', '~> 0'
   s.add_runtime_dependency 'pretty_table', '~>0'
 end
