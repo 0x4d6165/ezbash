@@ -5,19 +5,13 @@ require 'pretty_table'
 def addBrew()
   if `which brew` == ''
     puts 'You appear to be running MacOS without Homebrew installed.'
-    puts "If you don\'t know what Homebrew is, visit 'brew.sh', if you do and would like to install it, type 'yes'. >> "
+    puts "If you don\'t know what Homebrew is, visit 'brew.sh' or just hit enter. If you do and would like to install it, type 'yes'. >> "
     userReply = gets.chomp
     userReply.downcase!
-    until userSelect == true
-      if userReply == 'yes'
-        Kernel.system "ruby -e '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)'"
-        userSelect = true
-      elsif userReply == 'no'
-        puts "That\'s fine! Just keep in mind, the install, uninstall, and search commands won\'t work for you."
-        userSelect = true
-      else
-        puts 'Please say yes or no.'
-      end
+    if userReply == 'yes'
+      Kernel.system "ruby -e '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)'"
+    else
+      puts "That\'s fine! Just keep in mind, the install, uninstall, and search commands won\'t work for you."
     end
   end
 end
