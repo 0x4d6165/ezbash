@@ -1,0 +1,10 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    pretty_table (0.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  pretty_table
